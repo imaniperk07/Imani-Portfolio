@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imani Perkinson — Portfolio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Menu Bar -->
+<div class="menubar">
+  <div class="menubar-left">
+    <span class="wordmark" data-action="go-desktop">IP</span>
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">Projects</span>
+    <span class="menu-item">Special</span>
+  </div>
+  <div class="menubar-right">
+    <span class="status-icon">◐</span>
+    <span class="status-icon">🔊</span>
+    <span id="clock">Tue Jul 7 12:00 AM</span>
+  </div>
+</div>
+
+<!-- Desktop -->
+<div id="desktop" class="wallpaper-default">
+
+  <div class="desktop-icons">
+
+    <button class="icon" data-window="about" data-wallpaper="wallpaper-about">
+      <span class="badge badge-about">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="15" r="7" fill="#fff"/><path d="M6 34c2-9 8-13 14-13s12 4 14 13" fill="#fff"/></svg>
+      </span>
+      <span class="label">About Me</span>
+    </button>
+
+    <button class="icon" data-window="design" data-wallpaper="wallpaper-design">
+      <span class="badge badge-design">
+        <svg viewBox="0 0 40 40"><circle cx="15" cy="14" r="4" fill="#fff"/><circle cx="26" cy="12" r="3" fill="#fff"/><circle cx="30" cy="22" r="3" fill="#fff"/><path d="M8 22c0-9 7-15 16-15 8 0 14 5 14 11 0 5-4 7-8 7h-3c-2 0-3 1-3 3 0 1 1 2 1 3 0 3-3 5-7 5-10 0-10-9-10-14z" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+      </span>
+      <span class="label">Design&nbsp;Work</span>
+    </button>
+
+    <button class="icon" data-window="modeling" data-wallpaper="wallpaper-modeling">
+      <span class="badge badge-modeling">
+        <svg viewBox="0 0 40 40"><path d="M20 6 33 13v14L20 34 7 27V13z" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M7 13 20 20 33 13M20 20v14" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+      </span>
+      <span class="label">3D&nbsp;Modeling</span>
+    </button>
+
+    <button class="icon" data-window="camera" data-wallpaper="wallpaper-camera">
+      <span class="badge badge-camera">
+        <svg viewBox="0 0 40 40"><rect x="6" y="14" width="28" height="18" rx="3" fill="none" stroke="#fff" stroke-width="2.2"/><circle cx="20" cy="23" r="6" fill="none" stroke="#fff" stroke-width="2.2"/><rect x="14" y="9" width="12" height="6" rx="2" fill="#fff"/></svg>
+      </span>
+      <span class="label">Camera&nbsp;Work</span>
+    </button>
+
+    <button class="icon" data-window="contact" data-wallpaper="wallpaper-contact">
+      <span class="badge badge-contact">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M25 20a5 5 0 1 1-5-5c3 0 5 2 5 5v2c0 1.5 3 1.5 3-1 0-7-5-12-11-12s-12 5-12 12 5 11 12 11c2 0 4-.5 5.5-1.3" fill="none" stroke="#fff" stroke-width="2"/></svg>
+      </span>
+      <span class="label">Contact</span>
+    </button>
+
+  </div>
+
+  <!-- Windows -->
+
+  <div class="window" id="window-about" style="top:9%; left:12%;">
+    <div class="titlebar">
+      <span class="traffic">
+        <span class="tl-close" data-close="about"></span>
+        <span class="tl-min" data-min="about"></span>
+        <span class="tl-zoom" data-zoom="about"></span>
+      </span>
+      <span class="titletext">About Me</span>
+    </div>
+    <div class="window-content">
+      <div class="about-grid">
+        <div class="about-photo-slot" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="36" r="20" fill="#dfe7ee"/><path d="M12 96c4-24 20-34 38-34s34 10 38 34" fill="#dfe7ee"/></svg>
+        </div>
+        <div>
+          <h1>Imani Perkinson</h1>
+          <p class="tagline">Camera Operator &amp; Creative Media Specialist</p>
+          <table class="meta-table">
+            <tr><td>School</td><td>Promise Career Institute</td></tr>
+            <tr><td>Grade</td><td>Senior — Class of 2026</td></tr>
+            <tr><td>Program</td><td>Design &amp; Media Production, ATC</td></tr>
+          </table>
+        </div>
+      </div>
+      <p>I'm a high school student enrolled in a college program as a design and media production student at ATC. I have experience with live camera operation for school basketball games and school assemblies, plus experience in Photoshop and Illustrator creating posters.</p>
+      <p>A local elementary school once reached out to my school for someone to film their school play — my teacher asked me to be the one to record it, which gave me experience filming for an outside client on short notice.</p>
+      <div class="skills-row">
+        <span class="skill-chip">Photoshop</span>
+        <span class="skill-chip">Illustrator</span>
+        <span class="skill-chip">Live Camera Ops</span>
+        <span class="skill-chip">Autodesk Maya</span>
+        <span class="skill-chip">Autodesk 3ds Max</span>
+      </div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <div class="window" id="window-design" style="top:11%; left:20%;">
+    <div class="titlebar">
+      <span class="traffic">
+        <span class="tl-close" data-close="design"></span>
+        <span class="tl-min" data-min="design"></span>
+        <span class="tl-zoom" data-zoom="design"></span>
+      </span>
+      <span class="titletext">Design Work</span>
+    </div>
+    <div class="window-content">
+      <p class="window-intro">Poster and layout design work made in Photoshop and Illustrator.</p>
+      <div class="gallery">
+        <figure>
+          <img src="assets/poster-spiderman.jpg" alt="Amazing Spider-Man venom movie poster, custom design">
+          <figcaption>Custom movie poster — grain &amp; dot effect via Camera Raw filter</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/poster-batman.jpg" alt="Batman poster design">
+          <figcaption>Batman poster — made for fun in Photoshop</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/skate-cover.jpg" alt="Skateboarding magazine cover design">
+          <figcaption>Skate magazine cover — full layout, type &amp; cover lines</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <div class="window" id="window-modeling" style="top:8%; left:16%;">
+    <div class="titlebar">
+      <span class="traffic">
+        <span class="tl-close" data-close="modeling"></span>
+        <span class="tl-min" data-min="modeling"></span>
+        <span class="tl-zoom" data-zoom="modeling"></span>
+      </span>
+      <span class="titletext">3D Modeling</span>
+    </div>
+    <div class="window-content">
+      <p class="window-intro">3D work built in Autodesk Maya and Autodesk 3ds Max.</p>
+      <div class="gallery">
+        <figure>
+          <img src="assets/helmet-front.jpg" alt="Mandalorian-style helmet, front view, Maya render">
+          <figcaption>Mandalorian helmet (front) — modeled in Maya</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/helmet-angle.jpg" alt="Mandalorian-style helmet, angle view, Maya render">
+          <figcaption>Mandalorian helmet (angle) — modeled in Maya</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/lightsaber.jpg" alt="Lightsaber hilt model in 3ds Max">
+          <figcaption>Lightsaber hilt — modeled in 3ds Max</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/jake-the-dog.jpg" alt="Jake the Dog character model, Maya, Arnold render">
+          <figcaption>Jake the Dog — modeled &amp; rendered in Maya with Arnold</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <div class="window" id="window-camera" style="top:10%; left:22%;">
+    <div class="titlebar">
+      <span class="traffic">
+        <span class="tl-close" data-close="camera"></span>
+        <span class="tl-min" data-min="camera"></span>
+        <span class="tl-zoom" data-zoom="camera"></span>
+      </span>
+      <span class="titletext">Camera Work</span>
+    </div>
+    <div class="window-content">
+      <p class="window-intro">Live camera operation for school events and outside clients.</p>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/rDh3b1_CVlo" title="Promise Career Institute Honors Day livestream" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="caption-line">Promise Career Institute Honors Day livestream — main camera operator</p>
+      <ul class="camera-list">
+        <li>Live camera operation for school basketball games</li>
+        <li>Live camera operation for school assemblies</li>
+        <li>Recorded a school play for a partnering elementary school at a teacher's request</li>
+      </ul>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <div class="window" id="window-contact" style="top:14%; left:26%;">
+    <div class="titlebar">
+      <span class="traffic">
+        <span class="tl-close" data-close="contact"></span>
+        <span class="tl-min" data-min="contact"></span>
+        <span class="tl-zoom" data-zoom="contact"></span>
+      </span>
+      <span class="titletext">Contact</span>
+    </div>
+    <div class="window-content">
+      <p class="window-intro">Let's work together.</p>
+      <table class="meta-table">
+        <tr><td>Email</td><td><a href="mailto:imaniperk@icloud.com">imaniperk@icloud.com</a></td></tr>
+        <tr><td>LinkedIn</td><td><a href="https://www.linkedin.com/in/imani-p-a5288a369" target="_blank" rel="noopener">linkedin.com/in/imani-p-a5288a369</a></td></tr>
+      </table>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+</div>
+
+<!-- Dock -->
+<div class="dock">
+  <button class="dock-icon" data-action="go-desktop" title="Desktop">
+    <svg viewBox="0 0 40 40"><rect x="6" y="8" width="28" height="20" rx="2" fill="#fff" opacity=".85"/><rect x="6" y="30" width="28" height="4" rx="1" fill="#fff"/></svg>
+  </button>
+  <button class="dock-icon" data-window="about" title="About Me">
+    <svg viewBox="0 0 40 40"><circle cx="20" cy="15" r="7" fill="#fff"/><path d="M6 34c2-9 8-13 14-13s12 4 14 13" fill="#fff"/></svg>
+  </button>
+  <button class="dock-icon" data-window="design" title="Design Work">
+    <svg viewBox="0 0 40 40"><circle cx="15" cy="14" r="4" fill="#fff"/><circle cx="26" cy="12" r="3" fill="#fff"/><circle cx="30" cy="22" r="3" fill="#fff"/><path d="M8 22c0-9 7-15 16-15 8 0 14 5 14 11 0 5-4 7-8 7h-3c-2 0-3 1-3 3 0 1 1 2 1 3 0 3-3 5-7 5-10 0-10-9-10-14z" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+  </button>
+  <button class="dock-icon" data-window="modeling" title="3D Modeling">
+    <svg viewBox="0 0 40 40"><path d="M20 6 33 13v14L20 34 7 27V13z" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M7 13 20 20 33 13M20 20v14" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+  </button>
+  <button class="dock-icon" data-window="camera" title="Camera Work">
+    <svg viewBox="0 0 40 40"><rect x="6" y="14" width="28" height="18" rx="3" fill="none" stroke="#fff" stroke-width="2.2"/><circle cx="20" cy="23" r="6" fill="none" stroke="#fff" stroke-width="2.2"/><rect x="14" y="9" width="12" height="6" rx="2" fill="#fff"/></svg>
+  </button>
+  <button class="dock-icon" data-window="contact" title="Contact">
+    <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M25 20a5 5 0 1 1-5-5c3 0 5 2 5 5v2c0 1.5 3 1.5 3-1 0-7-5-12-11-12s-12 5-12 12 5 11 12 11c2 0 4-.5 5.5-1.3" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </button>
+  <button class="dock-icon dock-trash" title="Trash">
+    <svg viewBox="0 0 40 40"><path d="M10 12h20l-2 22H12z" fill="#fff" opacity=".85"/><path d="M15 12V8h10v4" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
