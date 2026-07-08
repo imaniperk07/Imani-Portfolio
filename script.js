@@ -90,6 +90,182 @@
     return document.getElementById("window-" + name);
   }
 
+  // ----------------------------------------------------------
+  // Dropdown menus (Apple / Edit / Special)
+  // ----------------------------------------------------------
+  var dropdowns = document.querySelectorAll(".dropdown");
+  var menuTriggers = [
+    { trigger: document.getElementById("apple-menu-trigger"), dropdown: document.getElementById("apple-menu-dropdown") },
+    { trigger: document.getElementById("edit-menu-trigger"), dropdown: document.getElementById("edit-menu-dropdown") },
+    { trigger: document.getElementById("special-menu-trigger"), dropdown: document.getElementById("special-menu-dropdown") }
+  ];
+
+  function closeAllDropdowns() {
+    dropdowns.forEach(function (d) { d.classList.remove("open"); });
+  }
+
+  menuTriggers.forEach(function (m) {
+    if (!m.trigger || !m.dropdown) return;
+    m.trigger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var isOpen = m.dropdown.classList.contains("open");
+      closeAllDropdowns();
+      if (!isOpen) m.dropdown.classList.add("open");
+    });
+  });
+
+  document.addEventListener("click", function () { closeAllDropdowns(); });
+
+  // Apple menu > About Me
+  var aboutMenuItem = document.querySelector('[data-action="open-about"]');
+  if (aboutMenuItem) {
+    aboutMenuItem.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closeAllDropdowns();
+      openWindow("about", "wallpaper-about");
+    });
+  }
+
+  // Special menu > Spotlight Search
+  var spotlightMenuItem = document.querySelector('[data-action="open-spotlight"]');
+  if (spotlightMenuItem) {
+    spotlightMenuItem.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closeAllDropdowns();
+      openSpotlight();
+    });
+  }
+
+  // ----------------------------------------------------------
+  // Spotlight Search
+  // ----------------------------------------------------------
+  var searchIndex = [
+    { label: "About Me", target: "about", wallpaper: "wallpaper-about", icon: "👤",
+      keywords: ["about","bio","imani","perkinson","info","education","school","georgia state","atlanta technical","student"] },
+    { label: "Design Work", target: "design", wallpaper: "wallpaper-design", icon: "🎨",
+      keywords: ["design","photoshop","illustrator","poster","batman","spiderman","spider-man","venom","skate","magazine","cover","art"] },
+    { label: "3D Modeling", target: "modeling", wallpaper: "wallpaper-modeling", icon: "🧊",
+      keywords: ["3d","modeling","maya","3ds max","3dsmax","helmet","mandalorian","lightsaber","saber","jake","dog","arnold","render"] },
+    { label: "Camera Work", target: "camera", wallpaper: "wallpaper-camera", icon: "🎥",
+      keywords: ["camera","video","film","livestream","stream","youtube","wonka","broadcast","production","games"] },
+    { label: "Resume", target: "resume", wallpaper: "wallpaper-resume", icon: "📄",
+      keywords: ["resume","cv","download","pdf","experience","work","job","dsw"] },
+    { label: "Contact", target: "contact", wallpaper: "wallpaper-contact", icon: "✉️",
+      keywords: ["contact","email","linkedin","reach","message"] }
+  ];
+
+  var spotlightOverlay = document.getElementById("spotlight-overlay");
+  var spotlightInput = document.getElementById("spotlight-input");
+  var spotlightResultsEl = document.getElementById("spotlight-results");
+  var activeIndex = -1;
+  var currentResults = [];
+
+  function openSpotlight() {
+    if (!spotlightOverlay) return;
+    spotlightOverlay.classList.add("open");
+    spotlightInput.value = "";
+    renderSpotlightResults("");
+    setTimeout(function () { spotlightInput.focus(); }, 30);
+  }
+  function closeSpotlight() {
+    if (!spotlightOverlay) return;
+    spotlightOverlay.classList.remove("open");
+  }
+
+  function renderSpotlightResults(query) {
+    var q = query.trim().toLowerCase();
+    var results;
+    if (!q) {
+      results = searchIndex;
+    } else {
+      results = searchIndex.filter(function (item) {
+        if (item.label.toLowerCase().indexOf(q) !== -1) return true;
+        return item.keywords.some(function (k) { return k.indexOf(q) !== -1 || q.indexOf(k) !== -1; });
+      });
+    }
+    currentResults = results;
+    activeIndex = results.length ? 0 : -1;
+    spotlightResultsEl.innerHTML = "";
+    if (!results.length) {
+      spotlightResultsEl.classList.add("open");
+      var empty = document.createElement("div");
+      empty.className = "spotlight-empty";
+      empty.textContent = "No results";
+      spotlightResultsEl.appendChild(empty);
+      return;
+    }
+    spotlightResultsEl.classList.add("open");
+    results.forEach(function (item, i) {
+      var row = document.createElement("div");
+      row.className = "spotlight-result" + (i === 0 ? " active" : "");
+      row.innerHTML = '<span class="spotlight-result-icon">' + item.icon + '</span><span>' + item.label + '</span>';
+      row.addEventListener("click", function () {
+        chooseSpotlightResult(item);
+      });
+      spotlightResultsEl.appendChild(row);
+    });
+  }
+
+  function chooseSpotlightResult(item) {
+    if (!item) return;
+    closeSpotlight();
+    openWindow(item.target, item.wallpaper);
+  }
+
+  function updateActiveHighlight() {
+    var rows = spotlightResultsEl.querySelectorAll(".spotlight-result");
+    rows.forEach(function (r, i) {
+      r.classList.toggle("active", i === activeIndex);
+    });
+  }
+
+  if (spotlightInput) {
+    spotlightInput.addEventListener("input", function () {
+      renderSpotlightResults(spotlightInput.value);
+    });
+    spotlightInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (activeIndex >= 0 && currentResults[activeIndex]) {
+          chooseSpotlightResult(currentResults[activeIndex]);
+        }
+      } else if (e.key === "Escape") {
+        closeSpotlight();
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (currentResults.length) {
+          activeIndex = (activeIndex + 1) % currentResults.length;
+          updateActiveHighlight();
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (currentResults.length) {
+          activeIndex = (activeIndex - 1 + currentResults.length) % currentResults.length;
+          updateActiveHighlight();
+        }
+      }
+    });
+  }
+
+  var menubarSearchBtn = document.getElementById("menubar-search-btn");
+  if (menubarSearchBtn) {
+    menubarSearchBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      openSpotlight();
+    });
+  }
+
+  if (spotlightOverlay) {
+    spotlightOverlay.addEventListener("click", function (e) {
+      if (e.target === spotlightOverlay) closeSpotlight();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && spotlightOverlay && spotlightOverlay.classList.contains("open")) {
+      closeSpotlight();
+    }
+  });
+
   function bringToFront(win) {
     topZ += 1;
     win.style.zIndex = topZ;
